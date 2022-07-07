@@ -14,8 +14,69 @@ public class IndividualTaxCalculator
         if (!taxPayer.IsCitizen)
         {
             throw new InvalidOperationException("Person is not citizen");
+        }else
+        {
+            if (taxPayer.HasDisability)
+            {
+                return 0;
+            }
+            if (taxPayer.IsMuslim)
+            {
+                if (taxPayer.ZakatPaid > 10000 && taxPayer.ZakatPaid < 50000)
+                {
+                    return 5;
+                }
+                if (taxPayer.ZakatPaid > 10000 && taxPayer.ZakatPaid < 100000)
+                {
+                    return 4;
+                }
+                if (taxPayer.ZakatPaid > 10000 && taxPayer.ZakatPaid < 200000)
+                {
+                    return 3;
+                }
+            }
+            if (taxPayer.IsRetired)
+            {
+                return 1;
+            }
         }
+        return 0;
+    }
+}
 
+
+
+public interface ITaxRule
+{
+    int CalculationTaxPercentage(TaxPayer taxPayer, int currentPercentage);
+}
+
+public class TaxRuleEngine
+{
+    List<ITaxRule> rules = new List<ITaxRule>();
+    public TaxRuleEngine(IEnumerable<ITaxRule> taxRules)
+    {
+        rules.AddRange(taxRules);
+    }
+    public int CalculationTaxPercentage(TaxPayer taxPayer)
+    {
+        int taxPercentage = 0;
+        foreach (var rule in rules)
+        {
+            taxPercentage = Math.Max(taxPercentage, rule.CalculationTaxPercentage(taxPayer, taxPercentage));
+        }
+        return taxPercentage;
+    }
+}
+
+public class RetiredRule : ITaxRule
+{
+    public int CalculationTaxPercentage(TaxPayer taxPayer, int currentPercentage)
+    {
+        if (taxPayer.IsRetired)
+        {
+            return 1;
+        }
         return 0;
     }
 }

@@ -9,6 +9,15 @@ namespace TaxCalculator.Pay.Entities;
 public class TaxPayer
 {
     public bool IsCitizen { get; set; }
+    public bool HasDisability { get; set; }
+    public bool IsMuslim { get; set; }
+    public decimal ZakatPaid { get; set; }
+    public bool IsRetired { get; set; }
 }
+
+
+
+
+
 
 
