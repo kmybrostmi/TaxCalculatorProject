@@ -4,5 +4,6 @@ namespace TaxCalculator.Pay.Interface;
 
 public interface ITaxRule
 {
-    int CalculationTaxPercentage(TaxPayer taxPayer, int currentPercentage);
+    TaxPayer CalculationTaxPercentage(TaxPayer taxPayer, double currentPercentage);
 }
+
