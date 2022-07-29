@@ -31,7 +31,7 @@ public class IndividualTaxCalculatorTest
 
 
     [Fact]
-    public void Diaable_Taxtpayer_Should_Pay_Zero_Percent_Tax()
+    public void Disable_Taxtpayer_Should_Pay_Zero_Percent_Tax()
     {
         //Arrange
         TaxPayer taxPayer = new TaxPayer
@@ -59,7 +59,8 @@ public class IndividualTaxCalculatorTest
         TaxPayer taxPayer = new TaxPayer
         {
             IsCitizen = true,
-            HasDisability = true
+            HasDisability = false,
+            IsRetired = true    
         };
         IndividualTaxCalculator individualTax = new IndividualTaxCalculator();
 
@@ -68,7 +69,7 @@ public class IndividualTaxCalculatorTest
 
         //Assert
 
-        Assert.Equal(0, result);
+        Assert.Equal(1, result);
     }
 }
 
