@@ -4,6 +4,13 @@
 using CompositeDesignPattern.Infra;
 using CompositeDesignPattern.Interface;
 
+#region Commandregion
+
+#endregion
+
+
+#region CompositeRegion
+
 //Creating Leaf Objects
 ICustomComponent cpu = new Leaf("cpu", 100);
 ICustomComponent ram = new Leaf("ram", 150);
@@ -41,3 +48,5 @@ peripherals.AddComponent(keyBoard);
 var price = computer.CalculatePrice();
 Console.WriteLine(price.ToString());
 Console.ReadKey();
+
+#endregion
