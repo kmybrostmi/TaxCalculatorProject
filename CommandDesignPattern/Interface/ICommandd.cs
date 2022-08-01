@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CommandDesignPattern.Interface;
-public interface ICommand
+public interface ICommandd
 {
     void Execute(); 
 }

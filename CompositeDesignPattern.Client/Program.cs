@@ -1,11 +1,23 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 
+using CommandDesignPattern.Data;
+using CommandDesignPattern.Infra.Commands;
+using CommandDesignPattern.Infra.Invokers;
 using CompositeDesignPattern.Infra;
 using CompositeDesignPattern.Interface;
 
 #region Commandregion
+var dataRecevier = new DataReciever();
+var invoker = new DataCommandInvoker();
 
+invoker.SetCommand(new UpsertCommand("item1", "value1", dataRecevier));
+invoker.ExecuteCommand();
+
+invoker.SetCommand(new DeleteCommand("item1", dataRecevier));
+invoker.ExecuteCommand();
+
+Console.ReadKey();
 #endregion
 
 

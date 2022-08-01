@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CommandDesignPattern\CommandDesignPattern.csproj" />
     <ProjectReference Include="..\CompositeDesignPattern\CompositeDesignPattern.csproj" />
   </ItemGroup>
 
