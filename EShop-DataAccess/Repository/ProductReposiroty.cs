@@ -27,27 +27,42 @@ public class ProductReposiroty : IProductRepository
 
     public void DecreaseStockBy(string articleId, int amount)
     {
-        throw new NotImplementedException();
+        if (!products.ContainsKey(articleId)) return;
+
+        products[articleId] =
+            (products[articleId].Product, products[articleId].Stock - amount);
     }
 
     public Product FindById(string articleId)
     {
-        throw new NotImplementedException();
+        if (products.ContainsKey(articleId))
+        {
+            return products[articleId].Product;
+        }
+        return null;
     }
 
     public IEnumerable<Product> GetAll()
     {
-        throw new NotImplementedException();
+        return products.Select(x=>x.Value.Product);
     }
 
     public int GetStockFor(string articleId)
     {
-        throw new NotImplementedException();
+        if (products.ContainsKey(articleId))
+        {
+            return products[articleId].Stock;
+        }
+        return 0;
+            
     }
 
     public void IncreaseStockBy(string articleId, int amount)
     {
-        throw new NotImplementedException();
+        if (!products.ContainsKey(articleId)) return;
+
+        products[articleId] =
+            (products[articleId].Product, products[articleId].Stock + amount);
     }
 }
 
