@@ -12,6 +12,7 @@
     <ProjectReference Include="..\CompositeDesignPattern\CompositeDesignPattern.csproj" />
     <ProjectReference Include="..\EShop-DataAccess\EShop-DataAccess.csproj" />
     <ProjectReference Include="..\MediatorDesignPattern\MediatorDesignPattern.csproj" />
+    <ProjectReference Include="..\SingletonDesignPattern\SingletonDesignPattern.csproj" />
   </ItemGroup>
 
 </Project>

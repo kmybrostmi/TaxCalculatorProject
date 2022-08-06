@@ -12,6 +12,7 @@ using EShop_DataAccess.Infra.Enums;
 using EShop_DataAccess.Repository;
 using MediatorDesignPattern.Infra.Concrete;
 using MediatorDesignPattern.Infra.Concrete.Mediator;
+using SingletonDesignPattern;
 
 #region Commandregion
 //var dataRecevier = new DataReciever();
@@ -121,16 +122,31 @@ using MediatorDesignPattern.Infra.Concrete.Mediator;
 
 #region MediatorDesignPattern
 
-var networkMediator = new NetworkMediator();
+//var networkMediator = new NetworkMediator();
 
-var desktopComputer = new DesktopComputer("computer-1", networkMediator);
-var server = new Server("server-1",networkMediator);
+//var desktopComputer = new DesktopComputer("computer-1", networkMediator);
+//var server = new Server("server-1",networkMediator);
 
-networkMediator.Register("computer-1", desktopComputer);
-networkMediator.Register("server-1", server);
+//networkMediator.Register("computer-1", desktopComputer);
+//networkMediator.Register("server-1", server);
 
-desktopComputer.SendCommand("server-1", "reboot");
-server.SendCommand("computer-1", "trigger-updates");
+//desktopComputer.SendCommand("server-1", "reboot");
+//server.SendCommand("computer-1", "trigger-updates");
+
+//Console.ReadKey();
+#endregion
+
+
+#region SingletonPattern
+
+var object1 = SingletonObject.GetInstance();
+Console.WriteLine($"Data of Object1 is : {object1.Data}");
+
+var object2 = SingletonObject.GetInstance();
+Console.WriteLine($"Data of Object1 is : {object2.Data}");
+
+Console.WriteLine($"Are Object 1 & 2 equal? {object.Equals(object1,object2)}");
 
 Console.ReadKey();
+
 #endregion
